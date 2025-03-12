@@ -3,13 +3,27 @@ import 'package:freebies/screens/home/Utils/constans/colors.dart';
 import 'package:icons_plus/icons_plus.dart';
 
 class DAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const DAppBar({super.key});
+  const DAppBar({
+    super.key,
+    required this.title,
+    this.firstIcon = Iconsax.notification_bing_outline,
+    required this.secondIcon,
+    this.backButton = false,
+  });
+
+  final String title;
+  final IconData firstIcon;
+  final IconData secondIcon;
+  final bool backButton;
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      leading: Icon(Iconsax.arrow_2_outline),
+      backgroundColor: DColors.pureWhite,
       title: Text(
         'Mega Shop',
         style: TextStyle(
