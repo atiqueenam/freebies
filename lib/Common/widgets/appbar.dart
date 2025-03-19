@@ -9,6 +9,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.firstIcon = Iconsax.notification_bing_outline,
     required this.secondIcon,
     this.backButton = false,
+    required bool back,
   });
 
   final String title;
@@ -22,7 +23,7 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: Icon(Iconsax.arrow_2_outline),
+      leading: Icon(Iconsax.arrow_2_bold),
       backgroundColor: DColors.pureWhite,
       title: Text(
         'Mega Shop',
