@@ -1,9 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:freebies/Common/widgets/appbar.dart';
+import 'package:freebies/screens/home/page/homescreen.dart';
+import 'package:freebies/screens/home/widget/bottom_nav_bar.dart';
 import 'package:icons_plus/icons_plus.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _homeState();
+}
+
+class _homeState extends State<Home> {
+  int _currentindex = 0;
+  final List<Widget> _screens = [
+    Homescreen(),
+    Container(color: Colors.blueAccent, height: double.infinity),
+    Container(color: Colors.redAccent, height: double.infinity),
+    Container(color: Colors.yellow, height: double.infinity),
+  ];
+  void onTapMethod(int index) {
+    setState(() {
+      _currentindex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,26 +33,10 @@ class Home extends StatelessWidget {
         secondIcon: IonIcons.cart,
         back: true,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Iconsax.home_1_bold),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Iconsax.lovely_outline),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Iconsax.bag_2_bold),
-            label: 'Wishlist',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Iconsax.user_add_outline),
-            label: 'Profile',
-          ),
-        ],
+      body: _screens[_currentindex],
+      bottomNavigationBar: fbottombar(
+        onTapMethod: onTapMethod,
+        currentindex: _currentindex,
       ),
     );
   }

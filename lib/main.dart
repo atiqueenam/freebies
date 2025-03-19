@@ -10,6 +10,6 @@ class demoecom extends StatelessWidget {
   const demoecom({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Demo E-Commerce', home: home());
+    return MaterialApp(title: 'Demo E-Commerce', home: Home());
   }
 }
